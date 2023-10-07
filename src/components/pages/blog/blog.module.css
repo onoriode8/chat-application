@@ -1,0 +1,20 @@
+.icon_text {
+    display: flex;
+    /* margin: 20px 8px; */
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.main_containers {
+    /* border: 1px solid black; */
+    margin: 0px 16%;
+    display: flex;
+    justify-content : flex-start;
+    padding: 12px 0px;
+    /* box-sizing:; */
+    /* align-items: ; */
+}

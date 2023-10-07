@@ -1,0 +1,26 @@
+
+.container {
+    /* border: 1px solid #fff; */
+    display: flex;
+    /* flex-wrap: wrap; */
+    text-align: start;
+    margin: 0px 222px;
+    padding: 25px ;
+    justify-content: space-between;
+    box-shadow: 1px 2px 3px 1px #8e8a8a;
+}
+
+
+.text_p {
+    font-size: 12px;
+}
+
+.btnContainer {
+    /* border: 1px solid black; */
+    padding: 10px 25px;
+    margin-right: 450px;
+}
+
+.btn {
+    display: flex;
+}

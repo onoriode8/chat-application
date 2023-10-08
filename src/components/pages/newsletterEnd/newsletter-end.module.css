@@ -1,0 +1,14 @@
+.container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 4% 10%;
+
+}
+
+.cont {
+   text-align: center;
+   /* margin: 4% 10%; */
+   padding: 4% 21%;
+}

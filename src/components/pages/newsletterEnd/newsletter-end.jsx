@@ -18,3 +18,6 @@ const newsletterEnd = () => (
 );
 
 export default newsletterEnd;
+
+// work on the rotating images later at the end newsletter with end button.
+

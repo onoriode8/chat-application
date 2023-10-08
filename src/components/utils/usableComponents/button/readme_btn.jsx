@@ -6,9 +6,10 @@ const readMeButton = (props) => {
         borderRadius: "5px",  
         border: "none",
         color: props.color,
-        padding: "7px 13px",
+        padding: "8px 15px",
         boxShadow: props.boxshadow,
-        margin: "15px 0px"
+        margin: "15px 0px",
+        fontSize: "11px"
         // marginRight: props.marginRight,
     };
 

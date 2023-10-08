@@ -1,0 +1,24 @@
+.container {
+    text-align: center;
+    /* border: 1px solid black; */
+}
+
+
+.icon_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.icon {
+    color: rgb(53, 242, 53);
+    margin: 0px 12px;
+}
+
+
+@media (max-width: 499px) {
+    .container {
+        margin: 20px 0px;
+    }
+}

@@ -9,7 +9,7 @@ import Newsletter from "../../components/pages/newsletter/newsletter"
 import SunBurnt from "../../components/pages/sunburnt/sunburnt" 
 import RotatingImages from "../../components/pages/rotatingImages/rotating_images"
 import NewsletterEnd from "../../components/pages/newsletterEnd/newsletter-end";
-
+import Articles from "../../components/pages/articles/articles"
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
       <SunBurnt />
       <RotatingImages />
       <NewsletterEnd />
+      <Articles />
     </div>
   );
 }

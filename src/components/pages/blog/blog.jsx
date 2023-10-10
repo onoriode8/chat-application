@@ -9,7 +9,7 @@ import Blogs from "../../utils/usableComponents/blogs/blogs";
 
 
 const blog = () => (
-    <div style={{textAlign: "center", height: "100vh"}}> {/* remove the height: 100vh from d page later*/}
+    <div style={{textAlign: "center"}}> 
         <header>
             <div className={classes.icon_text}>
                 <div style={{color: "green", margin: "15px 12px"}}><TiPlus /></div>

@@ -21,3 +21,10 @@ h3 {
     text-align: start;
     padding: 10px 0px;
 }
+
+@media(max-width: 499px) {
+    .blogs_container {
+        margin: 15px 0px;
+        text-align: center;
+    }
+}

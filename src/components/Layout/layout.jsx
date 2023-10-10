@@ -1,16 +1,13 @@
 import React from "react";
 
 import Navigation from "./Navigation/navigation";
-import { Logo } from "./logo/logo";
-import { NavEnd } from "./nav-end/nav_end";
-
+import Search from './search/search'
 
 const layout = () => (
     <div>
         <div>
-           <Logo />
            <Navigation />
-           <NavEnd />
+           <Search />
         </div>
     </div>
 );

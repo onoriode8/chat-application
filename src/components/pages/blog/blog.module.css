@@ -18,3 +18,14 @@ h2 {
     /* box-sizing:; */
     /* align-items: ; */
 }
+
+@media(max-width: 499px) {
+    .icon_text {
+        text-align: center;
+    }
+    .main_containers {
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

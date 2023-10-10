@@ -19,7 +19,14 @@ const newsletter = () => (
           <button className={classes.signIn}>Sign In</button>
         </div><br />
         <div className={classes.wrapperContainer}>
-            <NewsletterComponent image={newsletterCosmetic} width="240px" height="30vh" borderRadius="0.5em" />
+            <NewsletterComponent image={newsletterCosmetic}
+             paddingBtnContainer="10px 25px" 
+             marginRightBtnContainer="450px" 
+            //   margin="0px 222px"  
+              marginRight="222px" 
+              marginLeft="222px" 
+            //  padding: 25px ;
+             width="240px" height="30vh" borderRadius="0.5em" />
         </div>
     </div>
 );

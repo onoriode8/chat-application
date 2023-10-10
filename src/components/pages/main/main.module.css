@@ -22,6 +22,10 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border: 1px solid black;
+    box-shadow: 1px 2px 3px 1px #888;
+    border: 1px solid #fff;
+    border-radius: 0.5em;
 }
 
 h1, p {
@@ -46,4 +50,29 @@ h1, p {
 .h1 {
     font-size: 20px;
     margin: 0px 0px;
+}
+
+@media(max-width: 499px) {
+    .main_container {
+        /* border: 1px solid black; */
+        flex-direction: column;
+        justify-content: center;
+        /* margin: 0px 0px;
+        padding: 5px 0px; */
+    }
+    .mainContainer {
+        flex-direction: column;
+    }
+    .ImageCosmetics {
+        width: 300px;
+        height: 50vh;
+    }
+    .container {
+        flex-direction: column;
+        flex-wrap: wrap;
+        right: 15%;
+        left: 15%;
+        justify-content: center;
+    }
+    
 }

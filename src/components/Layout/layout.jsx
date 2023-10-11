@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Navigation from "./Navigation/navigation";
 import Search from './search/search'
+import SideDrawer from "./sideDrawer/sideDrawer"
 
-const layout = () => (
-    <div>
+const Layout = () => {
+    const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
+
+    const sideDrawerHandler = () => {
+        setSideDrawerOpen(prevState => !prevState)
+    }
+
+    return (
         <div>
-           <Navigation />
-           <Search />
+            <SideDrawer sideDrawerOpen={sideDrawerOpen} />
+            <div>
+            <Navigation clicked={sideDrawerHandler} />
+            <Search />
+            </div>
         </div>
-    </div>
-);
+  );
+};
 
-export default layout;
+export default Layout;

@@ -1,4 +1,22 @@
-.ul_lists {
+.cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #fff;
+    padding: 12px 0px;
+    box-shadow: 1px 1px 1px 1px #888;
+    margin: auto;
+    width: 101.4%;
+    position: relative;
+    z-index: 9;
+}
+
+.menu_icon {
+    margin-left: 20px;
+    font-size: 1.3em;
+}
+
+.ul_list {
     list-style: none;
     display: flex;
     /* text-align: center;  */
@@ -12,4 +30,105 @@
     width: 101%;
     z-index: 5;
     cursor: pointer;
+}
+
+/*  from sideDrawer component */
+.nav_sideDrawer_container {
+    text-align: start;
+    /* border: 1px solid black; */
+    list-style: none;
+}
+
+.nav_sideDrawer_container li {
+    margin: 0px 0px;
+    padding: 10px 0px;
+}
+
+.nav_sideDrawer_container li:hover {
+    /* border: 1px solid black; */
+    background: rgba(94, 94, 238, 0.4);
+    padding: 8px 12px;
+    color: #fff;
+}
+
+@media (max-width: 499px) {
+    .ul_lists {
+        display: none;
+    }
+
+    .cont {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #fff;
+        /* padding: 12px 0px; */
+        box-shadow: 1px 1px 1px 1px #888;
+        /* margin: 0px; */
+        /* width: 101.4%; */
+        position: relative;
+        z-index: 9;
+    }
+}
+
+@media (max-width: 414px) {
+    .ul_lists {
+        display: none;
+    }
+
+    .ul_lists {
+        list-style: none;
+        display: none;
+        /* text-align: center;  */
+        justify-content: space-around;
+        flex-wrap: wrap;
+        box-shadow: 4px 2px 4px 1px #888;
+        padding: 30px 0px;
+        border: 1px solid #fff;
+        margin-top: auto;
+        /* position: fixed; */
+        /* width: 101%; */
+        z-index: 5;
+        cursor: pointer;
+    }
+
+    .cont {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #fff;
+        /* padding: 12px 0px; */
+        box-shadow: 1px 1px 1px 1px #888;
+        /* margin: 0px; */
+        width: 100%;
+        position: relative;
+        z-index: 9;
+    }
+    .menu_icon {
+        /* margin-left: 20px; */
+        /* font-size: 1.3em; */
+    }
+}
+
+@media (max-width: 393px) {
+    .cont {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #fff;
+        /* padding: 12px 0px; */
+        box-shadow: 1px 1px 1px 1px #888;
+        /* margin: 0px; */
+        width: 101%;
+        position: relative;
+        z-index: 9;
+    }
+}
+
+/* continue with other device view 
+like 320px, 360px 393px and other view port  */
+
+@media(min-width: 500px) {
+    .cont {
+        display: none;
+    }
 }

@@ -20,11 +20,25 @@
     width: 300px;
     border: none;
 }
+
+.removeBorder{
+    border: none;
+    padding: 8px 20px;
+}
+
 @media (max-width: 499px) {
     .search_container {
         flex-wrap: wrap;
     }
     .search {
+        /* padding: 5px 20px;
+        margin-left: 40%;
+        margin-right: 40%; */
+        /* width: 180px; */
+        border: none;
+        /* border: 1px solid black; */
+    }
+    .search_icon {
         display: none;
     }
     .search_cont {

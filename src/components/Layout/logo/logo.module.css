@@ -2,3 +2,18 @@
     width: 50px;
     height: 4vh;
 }
+
+
+/* sideDrawer logo style css */
+.sideDrawerLogoStyle {
+    width: 120px;
+    height: 70px;
+}
+
+@media(max-width: 499px) {
+    .logo {
+        width: 60px;
+        height: 5vh;
+        margin: 0px 0px;
+    }
+}

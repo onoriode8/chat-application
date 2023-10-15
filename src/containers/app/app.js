@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from './app.css';
+import classes from './app.module.css';
 import Layout from "../../components/Layout/layout";
 import Main from "../../components/pages/main/main";
 import Blog from "../../components/pages/blog/blog";
@@ -13,17 +13,19 @@ import Articles from "../../components/pages/articles/articles"
 
 function App() {
   return (
-    <div className={classes.container}>
-      <Layout />
-      <Main />
-      <Blog />
-      <Newsletter />
-      <Advice />
-      <SunBurnt />
-      <RotatingImages />
-      <NewsletterEnd />
-      <Articles />
-    </div>
+    <React.Fragment>
+      <div className={classes.container}>
+        <Layout />
+        <Main />
+        <Blog />
+        <Newsletter />
+        <Advice />
+        <SunBurnt />
+        <RotatingImages />
+        <NewsletterEnd />
+        <Articles />
+      </div>
+    </React.Fragment>
   );
 }
 

@@ -1,0 +1,10 @@
+/* .container {
+    text-align: start;
+} */
+
+@media (max-width: 480px) {
+    .container {
+        text-align: center;
+        
+    }
+}

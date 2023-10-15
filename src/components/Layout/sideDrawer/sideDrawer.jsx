@@ -12,7 +12,10 @@ const sideDrawer = ({sideDrawerOpen}) => {
     }
     return (
         <div className={assignClasses.join(" ")}>
-            <Navigation sideDrawer={true} sideDrawerlogoStyle={true} />
+            <Navigation 
+            sideDrawerOpen={sideDrawerOpen} 
+            // sideDrawer={true}
+             sideDrawerlogoStyle={true} />
             <Search sideDrawerSearch={true} inputMessage="search articles" />
         </div>
   );

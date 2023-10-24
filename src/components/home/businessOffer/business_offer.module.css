@@ -1,0 +1,27 @@
+.container {
+    /* border: 1px solid black; */
+    text-align: center;
+    position: static;
+    z-index: 0;
+    margin: 30% 0px;
+}
+
+.div_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.offer_container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media(max-width: 800px) {
+    .container {
+        margin: 80% 0%;
+    }
+}

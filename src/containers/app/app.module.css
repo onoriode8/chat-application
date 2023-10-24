@@ -1,10 +1,11 @@
-/* .container {
-    text-align: start;
-} */
+.container {
+    text-align: center;
+}
 
-@media (max-width: 480px) {
+
+
+/* @media (max-width: 480px) {
     .container {
         text-align: center;
-        
     }
-}
+} */

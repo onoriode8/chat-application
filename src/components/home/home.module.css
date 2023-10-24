@@ -1,0 +1,114 @@
+ 
+.container p {
+    font-size: medium;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #fff;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: x-large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #fff;
+}
+
+.image_container {
+    width: 99%;
+    /* height: 100vh; */
+    z-index: 1;
+}
+
+.text_container {
+    position: relative;
+    z-index: 2;
+    margin: -20% 0%;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .image_container {
+        height: 100vh;
+    }
+    .text_container {
+        margin: -50% 0%;
+    }
+     
+    .container p { 
+        font-size: medium;
+
+    }
+}
+
+@media (max-width: 600px) {
+    .text_container {
+        margin: -50% 0%;
+    }
+}
+
+@media (max-width: 490px) {
+    .text_container {
+        margin: -50% 0%;
+    }
+    .image_container {
+        height: 60vh;
+    }
+    .container h1 {
+        font-size: x-large;
+        font-family: serif;
+    }
+}
+
+@media (max-width: 466px) {
+    .text_container {
+        margin: -60% 0%;
+    }
+    .image_container {
+        height: 80vh;
+        width: 100%;
+    }
+    .container h1 {
+        font-size: x-large;
+        font-family: serif;
+    }
+    .container p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 364px) {
+    .text_container {
+        margin: -50% 0%;
+    }
+    .image_container {
+        height: 80vh;
+        /* width: 120%; */
+    }
+    .container h1 {
+        font-size: large;
+        font-family: serif;
+    }
+    .container p { 
+        font-size: 10px;
+    }
+}
+
+@media(max-width: 316px) {
+    .container p {
+        font-size: 10px;
+        font-family: serif;
+    }
+}
+
+@media (max-width: 295px) {
+    .text_container {
+        margin: -65% 0%;
+    }
+    .image_container {
+        height: 70vh;
+    }
+   
+    .container p {
+        font-size: 9px;
+        font-family: serif;
+    }
+}

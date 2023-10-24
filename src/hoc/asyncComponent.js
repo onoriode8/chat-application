@@ -11,7 +11,7 @@ const AsyncComponent = (importComponent) => {
             importComponent()
                 .then(cmp => 
                     this.setState({ component: cmp.default })
-                ).catch(err => console.log(err.message))
+                )
         }
 
         render () {

@@ -1,0 +1,35 @@
+.container {
+    border: 1px solid #ccc;
+    padding: 30px 20px;
+    margin-right: 12%;
+    margin-left: 12%;
+    margin-bottom: 3%;
+    box-shadow: 1px 2px 6px 0px #ccc;
+    /* position: fixed; */
+    /* z-index: 4; */
+}
+
+.imgWrap {
+    border: 1px solid #ccc;
+    padding: 30px 20px;
+}
+
+.imgWrap p {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.img_wrap {
+    text-align: center;
+}
+
+.imgWrap img {
+    width: 400px;
+    height: 250px
+}
+
+.wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.8em;
+}

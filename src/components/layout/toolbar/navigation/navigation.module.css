@@ -1,0 +1,43 @@
+.cont {
+    border-right: 1px solid black;
+    height: 550px;
+    margin-right: 75%;
+}
+
+@media(max-width: 1200px) {
+    .cont {
+        margin-right: 72%;
+    }
+}
+
+@media(max-width: 1063px) {
+    .cont {
+        margin-right: 70%;
+    }
+}
+
+@media(max-width: 1000px) {
+    .cont {
+        margin-right: 68%;
+    }
+}
+
+@media(max-width: 900px) {
+    .cont {
+        margin-right: 65%;
+    }
+}
+
+@media(max-width: 830px) {
+    .cont {
+        margin-right: 64%;
+    }
+}
+
+@media(max-width: 800px) {
+    .cont {
+        border-right: none;
+        height: none;
+        margin-right: none;
+    }
+}

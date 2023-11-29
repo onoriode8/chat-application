@@ -4,6 +4,8 @@ import ErrorMessage from "../../../UI/errorMessage/error-message";
 import Spinner from '../../../UI/spinner/spinner'
 import UsersOutput from "../user-output/user-output";
 
+import classes from './users.module.css';
+
 const Users = () => {
     const [users, setUsers] = useState([]);
     const [spinner, setSpinner] = useState(false);
@@ -30,10 +32,10 @@ const Users = () => {
     }, []);
     
     return (
-        <div style={{marginLeft: "-77%", marginTop: "-5%"}}>
+        <div className={classes.wrapper}>
             {spinner && <Spinner />}
             {error && <ErrorMessage clear={() => setError(null)} errorMessage={error} />}
-            <div>
+            <div className={classes.cont}>
                 {users.length !== 0 ? users.map(u => <UsersOutput key={u.id} {...u} />) : null}
             </div>
         </div>

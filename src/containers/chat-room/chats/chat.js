@@ -4,6 +4,8 @@ import ErrorMessage from "../../../UI/errorMessage/error-message";
 import Spinner from "../../../UI/spinner/spinner";
 import UsersFriends from '../user-friends/UsersFriends';
 
+import classes from './chat.module.css';
+
 const Chat = () => {
     const [friends, setFriends] = useState([
         { name: "USERNAME 1", id: 1 },
@@ -36,8 +38,8 @@ const Chat = () => {
     }, []);
 
     return (
-        <div>
-            <h1 style={{textAlign: "center"}}>Chat</h1>
+        <div className={classes.chatContainer}>
+            <h1>Chat</h1>
             {/* {spinner && <Spinner />}
             {error && <ErrorMessage clear={() => setError(null)} errorMessage={error} />} */}
             <div>

@@ -16,6 +16,16 @@
     margin-left: 30px;
 }
 
+@media(max-width: 1150px) {
+    .cont {
+        width: 180px;
+    }
+    .input {
+        padding: 12px 5px;
+        width: 150px;
+    }
+}
+
 @media(max-width: 800px) {
     .cont {
         margin-left: 35%;

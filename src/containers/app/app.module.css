@@ -1,23 +1,11 @@
-.container {
-    border: 1px solid #ccc;
-    padding: 20px 12px;
-    margin: 5px 8px;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
+.wrapper {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-evenly;
 }
 
-.contain {
-    border: 1px solid #ccc;
-    padding: 20px 12px;
-    margin: 5px 8px;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-}
-
-.close {
-    transform: translateX(-300vh);
-}
-
-.open {
-    transform: translateX(0vh);
+@media(max-width: 800px) {
+    .wrapper {
+        flex-wrap: wrap;
+    }
 }

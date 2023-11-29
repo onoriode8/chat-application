@@ -1,0 +1,14 @@
+.wrapper {
+    margin-left: -77%;
+    margin-top: -10%;
+}
+
+.cont {
+    margin-top: -28rem;
+}
+
+@media(max-width: 652px) {
+    .wrapper {
+        margin-top: -12%;
+    }
+}

@@ -7,7 +7,7 @@ import useroutputCss from './user-output.module.css';
 
 
 const useroutput = (props) => {
-    console.log(props);
+    // console.log(props);
     return (
         <div className={useroutputCss.container}>
             <div>{props.username}</div>

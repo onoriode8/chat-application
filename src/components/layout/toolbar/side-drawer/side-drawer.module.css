@@ -1,0 +1,47 @@
+.SideDrawer {
+    width: 82%;
+    height: 200vh;
+    background: #fff;
+    border: 1px solid #eee;
+    transition: all 0.3s ease-in;
+    box-shadow: 1px 3px 11px 0px #ccc;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 8;
+}
+
+.ul_nav {
+    list-style: none;
+}
+
+.ul_nav li {
+    padding: 20px 0px;
+}
+
+.ul_nav a {
+    text-decoration: none;
+    color: black;
+    margin: 20px;
+}
+
+.close {
+    transform: translateX(-200vh);
+}
+
+.open {
+    transform: translateX(0vh);
+}
+
+@media(min-width: 801px) {
+    .SideDrawer {
+        display: none;
+    }
+}
+
+@media(max-width: 799px) {
+    .SideDrawer {
+        height: 250vh;
+        width: 45%;
+    }
+}

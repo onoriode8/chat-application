@@ -11,6 +11,13 @@ const Users = () => {
     const [spinner, setSpinner] = useState(false);
     const [error, setError] = useState(null);
 
+    // useEffect(() => {
+    //     fetch("https://jsonplaceholder.typicode.com/users")
+    //             .then(res => res.json())
+    //             .then(data => console.log("[DATA", data))
+    //             .catch(err => console.log(err.message))
+    // }, [])
+
     useEffect(() => {
         const getAllUsers = async () => {
             setSpinner(true)

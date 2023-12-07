@@ -12,7 +12,7 @@ import navItemsCss from './navItems.module.css';
 const navItems = (props) => {
     return (
         <nav>
-            <ul className={navItemsCss.ul_cont}>
+            <ul style={{fontSize: props.fontSize}} className={props.side ? navItemsCss.side : navItemsCss.ul_cont}>
                 <li><NavLink to="/"><TiHome className={navItemsCss.icon} /> Home</NavLink></li>
                 <li><NavLink to="/all_user"><FaUsers className={navItemsCss.icon} /> AllUsers</NavLink></li>
                 <li><NavLink to="friends"><GiThreeFriends className={navItemsCss.icon} /> Friends</NavLink></li>

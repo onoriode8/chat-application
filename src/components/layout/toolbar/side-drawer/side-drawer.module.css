@@ -42,6 +42,13 @@
 @media(max-width: 799px) {
     .SideDrawer {
         height: 250vh;
-        width: 45%;
+        width: 60%;
+    }
+}
+
+@media(max-width: 500px) {
+    .SideDrawer {
+        height: 300vh;
+        width: 80%;
     }
 }

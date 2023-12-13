@@ -1,7 +1,13 @@
-.ul_cont,
-.side {
+.ul_cont {
     list-style: none;
     /* border: 1px solid black; */
+    position: fixed;
+    left: 0;
+    margin: 60px 0px;
+}
+
+.side {
+    list-style: none;
 }
 
 .ul_cont li a,
@@ -19,7 +25,11 @@
     width: 100px;
 }
 
-.ul_cont li,
+.ul_cont li {
+    padding: 15px 16px;
+    margin: 10px;
+}
+
 .side li {
     padding: 20px 16px;
     margin: 10px;

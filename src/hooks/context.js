@@ -6,17 +6,24 @@ export const Context = createContext({
     settingDropdownFunc: () => {},
     side: false,
     sideHandler: () => {},
-    logout: () => {}
+    logout: () => {},
+    authenticationPageSwitch: false,
+    switchAuthenticationPageFunc: () => {}
 });
 
 
 const ContextHook = (props) => {
     const [dropdown, setDropdown] = useState(false);
     const [side, setSide] = useState(false);
+    const [switchPage, setSwitchPage] = useState(false);
 
 
     const dropdownHandler = () => {
         setDropdown(!dropdown)
+    };
+
+    const switchAuthPage = () => {
+        setSwitchPage(!switchPage);
     };
 
     const sideHandler = () => {
@@ -28,7 +35,9 @@ const ContextHook = (props) => {
         <Context.Provider 
            value={{ settingDropdown: dropdown, 
                 settingDropdownFunc: dropdownHandler, 
-                side: side, sideHandler: sideHandler 
+                side: side, sideHandler: sideHandler, 
+                authenticationPageSwitch: switchPage, 
+                switchAuthenticationPageFunc: switchAuthPage
             }}>
             {props.children}
         </Context.Provider>

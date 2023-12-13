@@ -3,8 +3,8 @@
     width: 100%;
     background: #fff;
     border: 1px solid #ccc;
-    padding: 15px 0px;
-    margin-bottom: 20px;
+    padding: 8px 0px;
+    margin-bottom: 10px;
     z-index: 6;
     position: sticky;
     top: 0;
@@ -14,6 +14,16 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    cursor: pointer;
+}
+
+.profile a {
+    text-decoration: none;
+    color: black;
+}
+.chat a {
+    text-decoration: none;
+    color: black;
 }
 
 @media(min-width: 800px) {
@@ -73,5 +83,16 @@
 @media(max-width: 515px) {
     .toolbar_wrapper {
         width: 105vh;
+    }
+    .toolbar {
+        display: flex;
+        /* justify-content: start; */
+        align-items: center;
+    }
+    .profile {
+        display: none;
+    }
+    .chat {
+        display: none;
     }
 }

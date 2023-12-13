@@ -1,0 +1,5 @@
+
+export const REQUEST_USERS = "REQUEST_USERS";
+export const FETCH_USERS = "FETCH_USERS";
+
+export const POST_USER_PROFILE = "POST_USER_PROFILE"

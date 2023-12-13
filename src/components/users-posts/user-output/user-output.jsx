@@ -16,7 +16,7 @@ const useroutput = (props) => {
                     cumque ducimus ex accusantium! Maxime quasi.
                 </p>
                 <div className={useroutputCss.img_wrap}>
-                <img src={appleImage} alt="" />
+                    <img src={appleImage} alt="" />
                 </div>
             </div>
             <hr />

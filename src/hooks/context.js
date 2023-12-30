@@ -1,4 +1,5 @@
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
+// import { MdSentimentSatisfiedAlt } from "react-icons/md";
 
 
 export const Context = createContext({
@@ -6,9 +7,16 @@ export const Context = createContext({
     settingDropdownFunc: () => {},
     side: false,
     sideHandler: () => {},
+    authentication: false,
+    token: null,
+    email: null,
+    id: null,
+    image: null,
+    username: null,
+    login: () => {},
     logout: () => {},
     authenticationPageSwitch: false,
-    switchAuthenticationPageFunc: () => {}
+    switchAuthenticationPageFunc: () => {},
 });
 
 
@@ -16,19 +24,59 @@ const ContextHook = (props) => {
     const [dropdown, setDropdown] = useState(false);
     const [side, setSide] = useState(false);
     const [switchPage, setSwitchPage] = useState(false);
+    const [auth, setAuth] = useState(false);
+    const [token, setToken] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [id, setId] = useState(null);
+    const [image, setImage] = useState(null);
+    const [username, setUsername] = useState(null);
+
+    
+    // const [storageToken, setStorageToken] = useState(null);
+    // const [storageId, setStorageId] = useState(null);
+
+
+    useEffect(() => {
+        const data = sessionStorage.getItem("data");
+        if(data === null) return;
+        const parsedData = JSON.parse(data);
+        setToken(parsedData.token);
+        setId(parsedData.id);
+        // setStorageToken(parsedData.token);
+        // setStorageId(parsedData.id);
+    }, []);
 
 
     const dropdownHandler = () => {
-        setDropdown(!dropdown)
+        setDropdown(!dropdown);
     };
 
     const switchAuthPage = () => {
-        setSwitchPage(!switchPage);
+        const prevState = switchPage
+        setSwitchPage(!prevState);
     };
 
     const sideHandler = () => {
         const prevState = side;
         setSide(!prevState);
+    }
+
+    const logoutHandler = () => {
+        setAuth(false)
+        setToken(null)
+        setEmail(null)
+        setId(null)
+        setImage(null)
+        setUsername(null)
+    }
+
+    const loginHandler = (username, token, email, id, image) => {
+        setAuth(true)
+        setUsername(username)
+        setToken(token)
+        setEmail(email)
+        setId(id)
+        setImage(image)
     }
 
     return (
@@ -37,7 +85,10 @@ const ContextHook = (props) => {
                 settingDropdownFunc: dropdownHandler, 
                 side: side, sideHandler: sideHandler, 
                 authenticationPageSwitch: switchPage, 
-                switchAuthenticationPageFunc: switchAuthPage
+                switchAuthenticationPageFunc: switchAuthPage,
+                auth: auth, logout: logoutHandler, login: loginHandler,
+                token: token, email: email,
+                id: id, image: image, username: username
             }}>
             {props.children}
         </Context.Provider>

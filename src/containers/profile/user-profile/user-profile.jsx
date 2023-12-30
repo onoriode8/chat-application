@@ -7,7 +7,7 @@ import { usePickUserProfile } from "../../../hooks/custom-hook";
 
 const UserProfile = (props) => {
     const { userPost, userProfileUrl, userProfileRef, 
-        addImageHandler, pickImageHandler } = usePickUserProfile();
+        addImageHandler, pickImageHandler, submitProfile } = usePickUserProfile();
    
     const submitProfileHandler = (event) => {
         event.preventDefault();
@@ -16,7 +16,15 @@ const UserProfile = (props) => {
         const imageList = formData.get("user_Image");
         console.log("Image_upload", imageList);
         if(imageList === null) return;
+        // const fileReader = new FileReader();
+        // let image;
+        // fileReader.onload = () => {
+        //     image = fileReader.result
+        // }
+        // fileReader.readAsDataURL(imageList)
+        // console.log("[READ-IMAGE]", image)
         props.uploadImageFunc(imageList);
+        
     };
 
     return (

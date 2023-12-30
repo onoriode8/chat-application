@@ -47,8 +47,9 @@ export const dispatchImageUpload = (image) => {
 export const userProfileHandlerFun = (imageList) => {
     return dispatch => {
         const postUserImage = async () => {
+            console.log("[CLIENT-PROFILE-UPLOAD]", imageList);
             try {
-                const response = await fetch("http://localhost:8080/users", {
+                const response = await fetch("http://localhost:8080/users/profile/id", {
                     method: "POST",
                     headers: { 
                         "Content-Type": "application/json",

@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Context } from './context';
 
 //useCustom hook for fetching usersFriends
 export const useFetch = () => {
@@ -108,8 +110,13 @@ export const usePickUserProfile = () => {
 export const useAuthenticationFunc = (url) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const inputRef = useRef();
+
+    let history = useHistory();
+
+    const { login } = useContext(Context)
 
     const inputFocusHandler = () => {
         if(email.trim().length !== 0) return
@@ -118,26 +125,37 @@ export const useAuthenticationFunc = (url) => {
     const submitFormHandler = (event) => {
         event.preventDefault();
         try {
-            const promise = new Promise(async (resolve, reject) => {
+            const authRequest = async () => {
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ password, email, dateJoined: new Date().toDateString() })
+                    body: JSON.stringify({ password, email })
                 })
                 if(response.ok === false) {
-                    reject("[REJECT--PROMISE]");
-                    throw new Error("failed");
+                    console.log("[RESPONSE.OK", response)
+                    const errorMessage = await response.json();
+                    setErrorMessage(errorMessage);
+                    return
+                    // throw new Error(errorMessage);
                 };
                 const responseData = await response.json();
-                console.log(resolve(responseData));
-            })
-            promise();
+                console.log("[RESPONSE DATA]", responseData)
+                login({ token: responseData.token, email: responseData.email, 
+                    id: responseData._id, image: responseData.image });
+                const data = JSON.stringify({ username: responseData.username,
+                    token: responseData.token, id: responseData.id, image: responseData.image })
+                sessionStorage.setItem("data", data);
+                history.push("/");
+            }
+            authRequest();
         } catch(err) {
+            setErrorMessage(err.message);
+            console.error("[ERROR-MESSAGE CATCHED", err.message);
             console.log("register form")
         }
     } 
 
-    return { setEmail, setPassword, submitFormHandler, inputFocusHandler, inputRef }
+    return { setEmail, errorMessage, setPassword, submitFormHandler, inputFocusHandler, inputRef }
 }

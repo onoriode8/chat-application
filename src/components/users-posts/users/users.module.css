@@ -1,11 +1,12 @@
 .wrapper {
-    margin-left: -77%;
-    margin-top: -10%;
+    margin-left: -50%;
+    /* margin-top: 30%; */
+    /* border: 1px solid black; */
 }
 
-.cont {
-    margin-top: -28rem;
-}
+/* .cont {
+    margin-top: 28rem;
+} */
 
 @media(max-width: 652px) {
     .wrapper {

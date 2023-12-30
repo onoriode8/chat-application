@@ -9,7 +9,7 @@ import { Context } from '../../../hooks/context';
 import "./settings.css";
 
 export const Settings = () => {
-    const { settingDropdown, settingDropdownFunc} = useContext(Context);
+    const { settingDropdown, settingDropdownFunc, id, email } = useContext(Context);
     // console.log(context)
     return (
         <div>
@@ -17,7 +17,7 @@ export const Settings = () => {
                 <div>Settings</div>
                 <MdArrowDropDown />
             </div>
-            {settingDropdown && <SettingsDropdown />}
+            {settingDropdown && <SettingsDropdown userId={id} email={email} />}
         </div>
     )
 }

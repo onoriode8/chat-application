@@ -1,0 +1,26 @@
+.welcome_container {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: rgba(65, 65, 200, 0.5);
+}
+
+.welcome_container p, 
+.welcome_container i {
+    font-family: 'Times New Roman', Times, serif;
+    color: blue;
+    font-size: 2em;
+
+}
+
+.welcome_container i {
+    font-size: 4em;
+}

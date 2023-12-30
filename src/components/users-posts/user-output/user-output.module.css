@@ -1,8 +1,8 @@
 .container {
     border: 1px solid #ccc;
     padding: 30px 20px;
-    margin-right: 25%;
-    margin-left: 25%;
+    /* margin-right: 25%; */
+    /* margin-left: 25%; */
     margin-bottom: 3%;
     box-shadow: 1px 2px 6px 0px #ccc;
     margin-top: 3em;
@@ -13,6 +13,9 @@
 .imgWrap {
     border: 1px solid #ccc;
     padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .imgWrap p {

@@ -1,9 +1,9 @@
 .ul_cont {
     list-style: none;
-    /* border: 1px solid black; */
-    position: fixed;
+    border: 1px solid black;
+    /* position: sticky; */
     left: 0;
-    margin: 60px 0px;
+    margin: -1800px 0px;
 }
 
 .side {
@@ -27,7 +27,7 @@
 
 .ul_cont li {
     padding: 15px 16px;
-    margin: 10px;
+    /* margin: 10px; */
 }
 
 .side li {
@@ -41,7 +41,6 @@
     background-color: rgba(292, 30, 50, 0.5);
     color: #fff;
 }
-
 
 @media(max-width: 800px) {
     .ul_cont {
@@ -96,7 +95,7 @@
         margin: 0px;
         height: 20vh;
     }
-}
+} 
 
 @media(max-width: 350px) {
     .ul_cont li {

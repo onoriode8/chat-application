@@ -11,6 +11,8 @@ import appleImage from '../../../assests/apple.jpg'
 
 const ToolbarProfile = ({ userProfile }) => {
     const { image, id } = useContext(Context);
+    console.log(id)
+    
     return (
         <>
             {/* {!userProfile || image === null ? */}

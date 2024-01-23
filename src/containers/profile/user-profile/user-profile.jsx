@@ -7,13 +7,13 @@ import { usePickUserProfile } from "../../../hooks/custom-hook";
 
 const UserProfile = (props) => {
     const { userPost, userProfileUrl, userProfileRef, 
-        addImageHandler, pickImageHandler, submitProfile } = usePickUserProfile();
+        addImageHandler, pickImageHandler } = usePickUserProfile();
    
     const submitProfileHandler = (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append("user_Image", userPost);
-        const imageList = formData.get("user_Image");
+        formData.append("image", userPost);
+        const imageList = formData.get("image");
         console.log("Image_upload", imageList);
         if(imageList === null) return;
         // const fileReader = new FileReader();
@@ -22,7 +22,7 @@ const UserProfile = (props) => {
         //     image = fileReader.result
         // }
         // fileReader.readAsDataURL(imageList)
-        // console.log("[READ-IMAGE]", image)
+        console.log("[READ-IMAGE]", userPost)
         props.uploadImageFunc(imageList);
         
     };

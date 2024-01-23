@@ -1,6 +1,6 @@
 .toolbar_wrapper {
     box-shadow: 1px 0px 11px 0px #ccc;
-    width: 100%;
+    /* width: 100%; */
     background: #fff;
     border: 1px solid #ccc;
     padding: 8px 0px;
@@ -39,35 +39,35 @@
 }
 
 @media(max-width: 799px) {
-    .toolbar_wrapper {
+    /* .toolbar_wrapper {
         width: 108%;
-    }
+    } */
 }
 
 @media(max-width: 780px) {
-    .toolbar_wrapper {
+    /* .toolbar_wrapper {
         width: 111%;
-    }
+    } */
 }
 
 @media(max-width: 740px) {
-    .toolbar_wrapper {
+    /* .toolbar_wrapper {
         width: 114%;
-    }
+    } */
 }
 
 @media(max-width: 700px) {
-    .toolbar_wrapper {
+    /* .toolbar_wrapper {
         width: 117%;
-    }
+    } */
 }
 
 @media(max-width: 799px) {
-    .toolbar_wrapper {
+    /* .toolbar_wrapper {
         width: 121%;
-    }
+    } */
 }
-
+/* 
 @media(max-width: 655px) {
     .toolbar_wrapper {
         width: 135%;
@@ -78,12 +78,12 @@
     .toolbar_wrapper {
         width: 150%;
     }
-}
+} */
 
 @media(max-width: 515px) {
-    .toolbar_wrapper {
+    /* .toolbar_wrapper {
         width: 105vh;
-    }
+    } */
     .toolbar {
         display: flex;
         /* justify-content: start; */

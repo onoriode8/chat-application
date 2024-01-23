@@ -1,9 +1,3 @@
-/* .register_container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 7em;
-} */
 
 .signIn_form_container {
     border: 1px solid #fff;
@@ -36,24 +30,26 @@
     margin-top: 30px;
 }
 
-/* @media (max-width: 800px) {
-    .register_container {
-        border: 1px solid black;
-        margin-left: 500px;
-        margin-top: 15em;
+@media(max-width: 540px) {
+    .signIn_form_container {
+        padding: 100px 80px;
+        justify-content: center;
+        align-items: center;
     }
 }
 
-@media (max-width: 798px) {
-    .register_container {
-        border: 1px solid black;
-        margin-left: 300px;
+@media(max-width: 499px) {
+    .signIn_form_container {
+        padding: 80px 30px;
+        justify-content: center;
+        align-items: center;
     }
 }
 
-@media (max-width: 509px) {
-    .register_container {
-        border: 1px solid black;
-        margin-left: 550px;
+@media(max-width: 280px) {
+    .signIn_form_container {
+        justify-content: center;
+        align-items: center;
+        padding: 30px 7px;
     }
-} */
+}

@@ -14,7 +14,7 @@ import Profile from '../../../containers/profile/toolbar-profile/toolbar-profile
 
 import "./toolbar.css";
 
-import appleImage from '../../../assests/apple.jpg'
+// import appleImage from '../../../assests/apple.jpg'
 
 const Toolbar = () => {
     const { sideHandler, token, id } = useContext(Context);

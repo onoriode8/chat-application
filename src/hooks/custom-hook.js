@@ -147,6 +147,7 @@ export const useAuthenticationFunc = (url) => {
                 const data = JSON.stringify({ username: responseData.username,
                     token: responseData.token, id: responseData.id, image: responseData.image })
                 sessionStorage.setItem("data", data);
+                console.log("history props", history);
                 history.push("/");
             }
             authRequest();

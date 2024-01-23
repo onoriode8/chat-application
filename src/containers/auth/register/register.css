@@ -40,24 +40,33 @@
     margin-top: 30px;
 }
 
-@media (max-width: 800px) {
+@media(max-width: 540px) {
     .register_container {
-        border: 1px solid black;
-        margin-left: 500px;
-        margin-top: 15em;
+        display: flex;
+        align-items: center;  
+        justify-content: center;
+        flex-direction: column-reverse;
+        margin-top: 7em;
+    }
+    .form_container {
+        padding: 100px 80px;
+        justify-content: center;
+        align-items: center;
     }
 }
 
-@media (max-width: 798px) {
-    .register_container {
-        border: 1px solid black;
-        margin-left: 300px;
+@media(max-width: 499px) {
+    .form_container {
+        padding: 80px 30px;
+        justify-content: center;
+        align-items: center;
     }
 }
 
-@media (max-width: 509px) {
-    .register_container {
-        border: 1px solid black;
-        margin-left: 550px;
+@media(max-width: 280px) {
+    .form_container {
+        justify-content: center;
+        align-items: center;
+        padding: 30px 7px;
     }
 }

@@ -1,0 +1,22 @@
+
+@media(max-width: 540px) {
+    .auth_image_register {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5em;
+    }
+    .auth_image_register img {
+        width: 300px;
+        height: 150px;
+    }
+    
+}
+
+@media(max-width: 280px) {
+    .auth_image_register {
+        margin-bottom: 2.5em;
+    }
+}
+

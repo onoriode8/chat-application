@@ -22,7 +22,7 @@ export default function Register() {
         // console.log(authenticationPageSwitch, "[TESTING]", switchAuthenticationPageFunc)
     return (
         <>
-        {errorMessage && <ErrorMessage errorMessage={errorMessage} clear={switchAuthenticationPageFunc} /> }
+        {errorMessage && <ErrorMessage errorMessage={errorMessage}  /> }
         <div className="register_container">
             {!authenticationPageSwitch ? <form onSubmit={submitFormHandler} className="form_container">
                 <div className='signup'>Signup</div>

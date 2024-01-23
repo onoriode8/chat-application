@@ -1,50 +1,56 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-// import Navigation from '../../components/layout/toolbar/navigation/navigation';
-import SideDrawer from '../../components/layout/toolbar/side-drawer/side-drawer';
-// import AllUsersPosts from '../../components/users-posts/users/users';
-// import ChatRoom from '../chat-room/chats/chat';
 import Toolbar from "../../components/layout/toolbar/toolbar";
 import ContextHook from '../../hooks/context';
-import AllUsers from '../all-users/all-users';
-
-// import classes from './app.module.css';
-import UserProfile from '../profile/user-profile/user-profile';
+// import AllUsers from '../all-users/all-users';
+// import UserProfile from '../profile/user-profile/user-profile';
 import Auth from '../auth/register/register';
-import { Context } from '../../hooks/context';
-import Home from '../../components/home/home';
-import ErrorPage from '../../UI/errorMessage/error-page';
-import ChatRoom from '../chat-room/chats/chat';
+// import Home from '../../components/home/home';
+// import ChatRoom from '../chat-room/chats/chat';
+
+//lazy loading
+import AsyncComponent from '../code_splitting/asynComponent';
+
+const AsyncHome = AsyncComponent(() => import("../../components/home/home"))
+const AsyncChatRoom = AsyncComponent(() => import('../chat-room/chats/chat'))
+const AsyncUserProfile = AsyncComponent(() => import('../profile/user-profile/user-profile'))
+const AsyncAllUsers = AsyncComponent(() => import('../all-users/all-users'));
 
 
-const App = React.memo((props) => {
+const App = () => {
+    const [id, setId] = useState(null);
+    const [token, setToken] = useState(null);
 
-    const { token, id } = useContext(Context)
+    useEffect(() => {
+        const storedData = sessionStorage.getItem("data");
+        const parsedData = JSON.parse(storedData)
+        if(!parsedData) { return }
+        setId(parsedData.id);
+        setToken(parsedData.token)
+    }, []);
 
     return (
         <React.Fragment>
             <ContextHook>
-                <Toolbar />
+                <Toolbar /> {/* fully responsive on all device views. */}
                 {token === null && id === null ? 
                     <Switch>
-                       <Route path="/auth" component={Auth} />
+                       <Route path="/auth" exact component={Auth} /> {/* fully responsive on all device views. */}
                        <Redirect to="/auth" />
-
                     </Switch>
                     :
                     <Switch>
-                        <Route path="/" component={Home} />
-                        <Route path={`${id}/chat`} component={ChatRoom} />
-                        <Route path={`/all_user/${id}`} component={AllUsers} />
-                        <Route path={`/user_profile/${id}`} component={UserProfile} />
+                        <Route path="/" exact component={AsyncHome} /> {/* not yet responsive on all device views. */}
+                        <Route path={`${id}/chat`} component={AsyncChatRoom} /> {/* not yet responsive on all device views. */}
+                        <Route path={`/all_user/${id}`} component={AsyncAllUsers} /> {/* not yet responsive on all device views. */}
+                        <Route path={`/user_profile/${id}`} component={AsyncUserProfile} /> {/* not yet responsive on all device views. */}
                         <Redirect to="/" />
-                        {/* <Route path="*" component={<ErrorPage />} />  */}
                     </Switch>
-                } 
+                }  
             </ContextHook>
         </React.Fragment>
     )
-});
+};
 
 export default App;

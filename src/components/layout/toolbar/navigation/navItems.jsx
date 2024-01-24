@@ -13,7 +13,7 @@ import navItemsCss from './navItems.module.css';
 
 
 const NavItems = (props) => {
-    const { sideHandler } = useContext(Context)
+    const { sideHandler } = useContext(Context);
     return (
         <nav>
             {props.side && <div style={{fontSize: "50px", textAlign: "end"}}

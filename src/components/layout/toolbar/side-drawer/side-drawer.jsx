@@ -17,11 +17,11 @@ const SideDrawer = () => {
     }
     return (
         <>
-        <div className={assignClasses.join(" ")}>
-        {/* {side && <Backdrop />} */}
-            <NavItems side={true} fontSize="8px" />
-        </div>
-        </>
+            <div className={assignClasses.join(" ")}>
+            {/* {side && <Backdrop />} */}
+                <NavItems side={true} fontSize="8px" />
+            </div> 
+        </> 
     );
 }
 

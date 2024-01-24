@@ -1,3 +1,7 @@
+.auth_image_register img {
+    width: 500px;
+    height: 200px;
+}
 
 @media(max-width: 540px) {
     .auth_image_register {

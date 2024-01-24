@@ -9,7 +9,7 @@ import Auth from '../auth/register/register';
 // import Home from '../../components/home/home';
 // import ChatRoom from '../chat-room/chats/chat';
 
-//lazy loading
+//lazy loading/ code splitting.
 import AsyncComponent from '../code_splitting/asynComponent';
 
 const AsyncHome = AsyncComponent(() => import("../../components/home/home"))
@@ -34,12 +34,12 @@ const App = () => {
         <React.Fragment>
             <ContextHook>
                 <Toolbar /> {/* fully responsive on all device views. */}
-                {token === null && id === null ? 
+                {/* {token === null && id === null ? 
                     <Switch>
                        <Route path="/auth" exact component={Auth} /> {/* fully responsive on all device views. */}
-                       <Redirect to="/auth" />
-                    </Switch>
-                    :
+                       {/* <Redirect to="/auth" />
+                    </Switch> */}
+                    {/* : */}
                     <Switch>
                         <Route path="/" exact component={AsyncHome} /> {/* not yet responsive on all device views. */}
                         <Route path={`${id}/chat`} component={AsyncChatRoom} /> {/* not yet responsive on all device views. */}
@@ -47,7 +47,7 @@ const App = () => {
                         <Route path={`/user_profile/${id}`} component={AsyncUserProfile} /> {/* not yet responsive on all device views. */}
                         <Redirect to="/" />
                     </Switch>
-                }  
+                {/* }   */}
             </ContextHook>
         </React.Fragment>
     )

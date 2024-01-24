@@ -29,8 +29,8 @@ export default function Signin() {
                      placeholder="Password" name="password" />
 
                 <div className='signin_btn_container'>
-                    <Button type="submit">Signup</Button>
-                    <Button type="submit" clicked={switchAuthenticationPageFunc}>switch to Register</Button>
+                    <Button type="submit">SignIn</Button>
+                    <Button type="submit" clicked={switchAuthenticationPageFunc}>switch to Signup</Button>
                 </div>
             </form>
         </div>

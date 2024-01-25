@@ -1,23 +1,28 @@
-@media(max-width: 799px) {
-    .chatContainer {
-        padding-left: 5em;
-        margin-right: -400px;
-        margin-left: -300px;
-        margin-top: -30rem;
-    }
-    .chatContainer h1 {
-        /* text-align: flex-start; */
-        margin-right: 100px;
-        font-size: 19px;
-        color: rgb(43, 43, 250);
-    }
+.wrapper {
+    position: sticky;
+    border: 1px solid #ccc;  
+    box-shadow: 1px 8px 11px 0px #ccc;
+    padding: 0px 30px;
+    margin-top: -248em;
 }
 
-@media(max-width: 652px) {
-    .chatContainer {
-        /* padding-left: 5em; */
-        /* margin-right: -400px; */
-        margin-left: -150px;
-        /* margin-top: -30rem; */
+.chatContainer {
+    height: 78vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chatContainer p {
+    font-size: 10px;
+    margin: 5px 0px;
+    text-decoration: underline;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* start here later to carry the friends list to top page. */
+@media(min-width: 912px) { 
+    .wrapper {
+        margin-top: -248em;
     }
 }

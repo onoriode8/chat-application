@@ -34,20 +34,20 @@ const App = () => {
         <React.Fragment>
             <ContextHook>
                 <Toolbar /> {/* fully responsive on all device views. */}
-                {/* {token === null && id === null ? 
+                {token === null && id === null ? 
                     <Switch>
                        <Route path="/auth" exact component={Auth} /> {/* fully responsive on all device views. */}
-                       {/* <Redirect to="/auth" />
-                    </Switch> */}
-                    {/* : */}
+                       <Redirect to="/auth" />
+                    </Switch>
+                   :
                     <Switch>
-                        <Route path="/" exact component={AsyncHome} /> {/* not yet responsive on all device views. */}
+                        <Route path="/" exact component={AsyncHome} /> {/* not yet responsive on all device views.
                         <Route path={`${id}/chat`} component={AsyncChatRoom} /> {/* not yet responsive on all device views. */}
                         <Route path={`/all_user/${id}`} component={AsyncAllUsers} /> {/* not yet responsive on all device views. */}
                         <Route path={`/user_profile/${id}`} component={AsyncUserProfile} /> {/* not yet responsive on all device views. */}
                         <Redirect to="/" />
                     </Switch>
-                {/* }   */}
+                } 
             </ContextHook>
         </React.Fragment>
     )

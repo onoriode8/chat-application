@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 // import { MdSentimentSatisfiedAlt } from "react-icons/md";
 
+import { withRouter } from 'react-router-dom'
 
 export const Context = createContext({
     settingDropdown: false,
@@ -35,7 +36,7 @@ const ContextHook = (props) => {
     // const [storageToken, setStorageToken] = useState(null);
     // const [storageId, setStorageId] = useState(null);
 
-
+    console.log("FROM CONTEXT LINE 39", props);
     useEffect(() => {
         const data = sessionStorage.getItem("data");
         if(data === null) return;
@@ -68,6 +69,7 @@ const ContextHook = (props) => {
         setId(null)
         setImage(null)
         setUsername(null)
+        props.history.push("/auth");
     }
 
     const loginHandler = (username, token, email, id, image) => {
@@ -95,4 +97,4 @@ const ContextHook = (props) => {
     )
 };
 
-export default ContextHook
+export default withRouter(ContextHook)

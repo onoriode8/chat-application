@@ -1,5 +1,3 @@
-// import { useCallback, useMemo } from 'react';
-
 
 import * as actionTypes from './action-types';
 
@@ -17,7 +15,7 @@ export const fetchUsers = () => {
     return dispatch => {
         const request = async () => {
             try {
-                const response = await fetch("https://jsonplaceholder.typicode.com/users");
+                const response = await fetch(`${process.env.REACT_APP_AUTHENTICATION}/upload/images`);
                 const responseData = await response.json();
                 if (response.ok === false) {
                     throw new Error("user not found")
@@ -44,23 +42,30 @@ export const dispatchImageUpload = (image) => {
 }
 
 
-export const userProfileHandlerFun = (imageList) => {
+export const userProfileHandlerFun = (imageList, id, token) => {
+    // const { id, token } = useContext(Context);
+    // console.log("ID & TOKEN", id, token);
     return dispatch => {
         const postUserImage = async () => {
+        console.log("ID & TOKEN", id, token);
+        const url = `${process.env.REACT_APP_AUTHENTICATION}/profile/${id}`
+        console.log("URL", url)
             console.log("[CLIENT-PROFILE-UPLOAD]", imageList);
             try {
-                const response = await fetch("http://localhost:8080/users/profile/id", {
+                const response = await fetch(`${process.env.REACT_APP_AUTHENTICATION}/profile/${id}`, {
                     method: "POST",
                     headers: { 
                         "Content-Type": "application/json",
-                        "authorization": "token from server"
+                        "authorization": "Bearer " + token
                     },
-                    body: imageList
+                    body: JSON.stringify(imageList)
                 });
+                console.log("SERVER-RESPONSE");
                 const responseData = await response.json();
                 if (response.ok === false) {
                     throw new Error("user not found")
                 }
+                console.log("SERVER-RESPONSE", responseData)
                 dispatch(dispatchImageUpload(responseData.image));
             } catch (err) {
                 console.error(err.message)

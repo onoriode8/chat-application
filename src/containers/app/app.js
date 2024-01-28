@@ -34,7 +34,7 @@ const App = () => {
         <React.Fragment>
             <ContextHook>
                 <Toolbar /> {/* fully responsive on all device views. */}
-                { token === null && !id === null ? 
+                { token === null && id === null ? 
                     <Switch>
                        <Route path="/auth" exact component={Auth} /> {/* fully responsive on all device views. */}
                        <Redirect to="/auth" />

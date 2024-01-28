@@ -1,11 +1,24 @@
-// import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { connect } from "react-redux"
 
+import { Context } from '../../../hooks/context';
 import * as actionCreator from "../../../store/actions/actions-creators"
 import { usePickUserProfile } from "../../../hooks/custom-hook";
 // import Button from '../../../UI/button/button';
 
 const UserProfile = (props) => {
+    const [id, setId] = useState(null);
+    const [token, setToken] = useState(null);
+    // const { id, token } = useContext(Context);
+
+    useEffect(() => {
+        const storedData = sessionStorage.getItem("data");
+        const parsedData = JSON.parse(storedData)
+        if(!parsedData) { return }
+        setId(parsedData.id);
+        setToken(parsedData.token)
+    }, [])
+
     const { userPost, userProfileUrl, userProfileRef, 
         addImageHandler, pickImageHandler } = usePickUserProfile();
    
@@ -23,7 +36,7 @@ const UserProfile = (props) => {
         // }
         // fileReader.readAsDataURL(imageList)
         console.log("[READ-IMAGE]", userPost)
-        props.uploadImageFunc(imageList);
+        props.uploadImageFunc(imageList, id, token);
         
     };
 
@@ -60,7 +73,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        uploadImageFunc: (imageList) => dispatch(actionCreator.userProfileHandlerFun(imageList))
+        uploadImageFunc: (imageList, id, token) => dispatch(actionCreator.userProfileHandlerFun(imageList, id, token))
     }
 }
 

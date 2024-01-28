@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 
 import Button from '../../../UI/button/button';
+import Spinner from '../../../UI/spinner/spinner';
+
 
 import './signin.css';
 
@@ -11,7 +13,7 @@ import { Context } from '../../../hooks/context';
 export default function Signin() {
     const URL = `${process.env.REACT_APP_AUTHENTICATION}/login`
 
-    const { setEmail, setPassword, submitFormHandler,
+    const { loading, setEmail, setPassword, submitFormHandler,
          inputFocusHandler, inputRef } = useAuthenticationFunc(URL);
 
     const { switchAuthenticationPageFunc } = useContext(Context);
@@ -19,6 +21,7 @@ export default function Signin() {
     return (
         <div>
             <form onSubmit={submitFormHandler} className="signIn_form_container">
+                {loading ? <Spinner /> : null}
                 <div className='signin'>Signin</div>
 
                 <input ref={inputRef} type="email" onChange={(e) => setEmail(e.target.value)}

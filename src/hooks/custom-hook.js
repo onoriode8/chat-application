@@ -111,6 +111,7 @@ export const useAuthenticationFunc = (url) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
+    const [loading, setLoading] = useState(false)
 
     const inputRef = useRef();
 
@@ -125,6 +126,7 @@ export const useAuthenticationFunc = (url) => {
     const submitFormHandler = (event) => {
         event.preventDefault();
         try {
+            setLoading(true);
             const authRequest = async () => {
                 const response = await fetch(url, {
                     method: 'POST',
@@ -142,6 +144,7 @@ export const useAuthenticationFunc = (url) => {
                 };
                 const responseData = await response.json();
                 console.log("[RESPONSE DATA]", responseData)
+                setLoading(false);
                 login({ token: responseData.token, email: responseData.email, 
                     id: responseData._id, image: responseData.image });
                 const data = JSON.stringify({ username: responseData.username,
@@ -152,11 +155,12 @@ export const useAuthenticationFunc = (url) => {
             }
             authRequest();
         } catch(err) {
+            setLoading(false);
             setErrorMessage(err.message);
             console.error("[ERROR-MESSAGE CATCHED", err.message);
             console.log("register form")
         }
     } 
 
-    return { setEmail, errorMessage, setPassword, submitFormHandler, inputFocusHandler, inputRef }
+    return { loading, setEmail, errorMessage, setPassword, submitFormHandler, inputFocusHandler, inputRef }
 }

@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 
 import Button from '../../../UI/button/button';
+import Spinner from '../../../UI/spinner/spinner';
+
 import './register.css';
 
 import { useAuthenticationFunc } from '../../../hooks/custom-hook'
@@ -15,7 +17,7 @@ export default function Register() {
 
     //console.log("[URL-DATA]", `${process.env.REACT_APP_AUTHENTICATION}`)
 
-    const { setEmail, errorMessage, setPassword, submitFormHandler,
+    const { loading, setEmail, errorMessage, setPassword, submitFormHandler,
          inputFocusHandler, inputRef } = useAuthenticationFunc(URL);
 
     const { authenticationPageSwitch, switchAuthenticationPageFunc } = useContext(Context);
@@ -25,6 +27,7 @@ export default function Register() {
         {errorMessage && <ErrorMessage errorMessage={errorMessage}  /> }
         <div className="register_container">
             {!authenticationPageSwitch ? <form onSubmit={submitFormHandler} className="form_container">
+                {loading ? <Spinner /> : null}
                 <div className='signup'>Signup</div>
 
                 <input ref={inputRef} type="email" onChange={(e) => setEmail(e.target.value)}

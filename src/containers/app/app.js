@@ -41,7 +41,7 @@ const App = () => {
                 { token === null && id === null ? 
                     <Switch>
                        <Route path="/auth" exact component={Auth} /> {/* fully responsive on all device views. */}
-                       {/* <Redirect to="/auth" /> */}
+                       <Redirect to="/auth" />
                     </Switch>
                    :
                     <Switch>

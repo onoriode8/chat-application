@@ -26,11 +26,11 @@ const UserProfile = (props) => {
    
     const submitProfileHandler = (event) => {
         event.preventDefault();
-        const formData = new FormData();
-        formData.append("image", userPost);
-        const imageList = formData.get("image");
-        console.log("Image_upload", imageList);
-        if(imageList === null) return;
+        // const formData = new FormData();
+        // formData.append("image", userProfileUrl); //change to userPost
+        // const imageList = formData.get("image");
+        // console.log("Image_upload", imageList);
+        // if(imageList === null) return;
         // const fileReader = new FileReader();
         // let image;
         // fileReader.onload = () => {
@@ -38,7 +38,7 @@ const UserProfile = (props) => {
         // }
         // fileReader.readAsDataURL(imageList)
         console.log("[READ-IMAGE]", userPost)
-        props.uploadImageFunc(imageList, id, token);
+        props.uploadImageFunc(userPost, id, token);
         
     };
 
@@ -52,7 +52,10 @@ const UserProfile = (props) => {
                     {userProfileUrl && <img style={{ width: "200px", height: "200px", borderRadius: "100px" }}
                         src={userProfileUrl} alt="" />}
                     {/* <br /> */}
-                    <input ref={userProfileRef}  type="file" style={{ display: "none" }} onChange={pickImageHandler}/>
+                    <input ref={userProfileRef} 
+                     type="file" accept=".png, .jpeg, .jpg, .svg, .webp"
+                     encType="multipart/form-data" 
+                     style={{ display: "none" }} onChange={pickImageHandler}/>
 
                     {userProfileUrl === null ? <button style={buttonStyle} onClick={addImageHandler}>Add Image</button>
                         :

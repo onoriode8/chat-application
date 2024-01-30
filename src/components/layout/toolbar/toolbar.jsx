@@ -23,7 +23,9 @@ const Toolbar = () => {
 
     const logoutFunc = () => {
         sessionStorage.removeItem("data");
+        sessionStorage.removeItem("user_Image")
         history.push("/auth");
+        history.replace("/auth");
     };
 
     return (

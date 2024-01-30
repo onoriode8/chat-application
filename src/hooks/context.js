@@ -40,10 +40,12 @@ const ContextHook = (props) => {
     console.log("FROM CONTEXT LINE 39", props);
     useEffect(() => {
         const data = sessionStorage.getItem("data");
-        if(data === null) return;
+        // const image = sessionStorage.getItem("user_Image")
+        if(data === null ) return;
         const parsedData = JSON.parse(data);
         setToken(parsedData.token);
         setId(parsedData.id);
+        // setImage(JSON.parse(image))
         // setStorageToken(parsedData.token);
         // setStorageId(parsedData.id);
     }, []);
@@ -70,7 +72,9 @@ const ContextHook = (props) => {
         setId(null)
         setImage(null)
         setUsername(null)
+        sessionStorage.removeItem("user_Image")
         props.history.push("/auth");
+        props.history.replace("/auth")
     }
 
     const loginHandler = (username, token, email, id, image) => {

@@ -79,27 +79,38 @@ export const userProfileHandlerFun = (imageList, id, token) => {
             console.log("[CLIENT-PROFILE-UPLOAD]", imageList);
             try {
                 const formData = new FormData();
-                formData.append("image", imageList)
-                formData.append("name", "Javscript")
+                // formData.set("image", imageList, imageList.name)
+                formData.append("image", imageList);
                 // const image = formData.get("image");
+                console.log("85", formData.get("image"))
                 dispatch(spinnerUploadingProfile(true))
-                const response = await fetch(`${backendURL}/profile/${id}`, {
-                    method: "POST",
-                    headers: { 
-                        "Content-Type": "application/json",
-                        "authorization": "Bearer " + token
-                    },
+                // const file = {
+                //     name: imageList.name, 
+                //     type: imageList.type 
+                // }
+                const response = await fetch(`${backendURL}/profile/${id}`, 
+                // {
+                    // method: "POST",
+                    // headers: { 
+                    //     "Content-Type": "application/json",
+                    //     "authorization": "Bearer " + token
+                    // },
                     formData
-                });
-                console.log("SERVER-RESPONSE");
+                // }
+                );
+                console.log("SERVER-RESPONSE", response);
                 const responseData = await response.json();
                 if (response.ok === false) {
                     throw new Error("user not found")
                 }
+                sessionStorage.setItem("user_Image", JSON.stringify(responseData.lastImageUploaded))
+                // console.log("Image_Data",data);
+                // const imageData = JSON.parse(data)
+                // imageData.image.push(responseData.lastImageUploaded)
                 dispatch(spinnerUploadingProfile(false))
                 console.log("SERVER-RESPONSE", responseData)
                 alert("Uploaded successful");
-                dispatch(dispatchImageUpload(responseData.image));
+                dispatch(dispatchImageUpload(responseData.lastImageUploaded));
             } catch (err) {
                 dispatch(spinnerUploadingProfile(false))
                 dispatch(errorUploadingProfile(err.message))

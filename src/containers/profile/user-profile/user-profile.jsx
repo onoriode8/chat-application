@@ -1,15 +1,17 @@
 import { useState, useEffect, useContext } from 'react';
 import { connect } from "react-redux"
 
-import { Context } from '../../../hooks/context';
+// import { Context } from '../../../hooks/context';
 import * as actionCreator from "../../../store/actions/actions-creators"
-import { usePickUserProfile } from "../../../hooks/custom-hook";
+import { usePickUserProfile, useFetchPosts } from "../../../hooks/custom-hook";
+import ErrorMessage from '../../../UI/errorMessage/error-message';
+import Spinner from '../../../UI/spinner/spinner';
 // import Button from '../../../UI/button/button';
 
 const UserProfile = (props) => {
     const [id, setId] = useState(null);
     const [token, setToken] = useState(null);
-    // const { id, token } = useContext(Context);
+    // const {  } = useContext(Context);
 
     useEffect(() => {
         const storedData = sessionStorage.getItem("data");
@@ -40,18 +42,25 @@ const UserProfile = (props) => {
         
     };
 
-    return (
-        <div style={{ display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "start", marginTop: "4em" }}>
-            <form onSubmit={submitProfileHandler}>
-                {userProfileUrl && <img style={{ width: "200px", height: "200px", borderRadius: "100px" }}
-                    src={userProfileUrl} alt="" />}
-                {/* <br /> */}
-                <input ref={userProfileRef}  type="file" style={{ display: "none" }} onChange={pickImageHandler}/>
+    
 
-                {userProfileUrl === null ? <button style={buttonStyle} onClick={addImageHandler}>Add Image</button>
-                    :
-                    <button type="submit" style={buttonStyle}>Upload Image</button>}
-            </form>
+    return (
+        <div>
+            {props.profileError && <div style={{marginTop: "4em", textAlign: "center", fontSize: "2em"}}>{props.profileError}</div>}
+            <div style={{ display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "start", marginTop: "4em" }}>
+                <form onSubmit={submitProfileHandler}>
+                    {userProfileUrl && <img style={{ width: "200px", height: "200px", borderRadius: "100px" }}
+                        src={userProfileUrl} alt="" />}
+                    {/* <br /> */}
+                    <input ref={userProfileRef}  type="file" style={{ display: "none" }} onChange={pickImageHandler}/>
+
+                    {userProfileUrl === null ? <button style={buttonStyle} onClick={addImageHandler}>Add Image</button>
+                        :
+                        <button type="submit" style={buttonStyle}>Upload Image</button>}
+                </form>
+
+                <div style={{textAlign: "center"}}>{ props.spinner ? <Spinner />: null }</div>
+            </div>
         </div>
     )
 };
@@ -67,7 +76,9 @@ const buttonStyle = {
 
 const mapStateToProps = state => {
     return {
-        userProfile: state.users.userProfile
+        userProfile: state.users.userProfile,
+        profileError: state.users.profileError,
+        spinner: state.users.spinner
     }
 }
 

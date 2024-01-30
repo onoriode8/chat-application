@@ -18,6 +18,7 @@ export const Context = createContext({
     logout: () => {},
     authenticationPageSwitch: false,
     switchAuthenticationPageFunc: () => {},
+    backendURL: "https://backend-chat-application.onrender.com/users"
 });
 
 

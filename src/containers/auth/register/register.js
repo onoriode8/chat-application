@@ -13,7 +13,8 @@ import AuthImage from '../auth-image';
 
 
 export default function Register() {
-    const URL = `${process.env.REACT_APP_AUTHENTICATION}/register`
+    // const URL = `${process.env.REACT_APP_AUTHENTICATION}/register`
+    const URL = "http://localhost:8080/users/register"
 
     //console.log("[URL-DATA]", `${process.env.REACT_APP_AUTHENTICATION}`)
 

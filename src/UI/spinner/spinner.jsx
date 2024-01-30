@@ -2,8 +2,10 @@ import spinnerCss from './spinner.module.css';
 
 
 const spinner = () => (
-    <div className={spinnerCss.spinner}>
-        <div>Loading ...</div>
+    <div className={spinnerCss.loader}>
+        {/* <div> */}
+            Loading ...
+        {/* </div> */}
     </div>
 );
 

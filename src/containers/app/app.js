@@ -30,6 +30,10 @@ const App = () => {
         setToken(parsedData.token)
     }, []);
 
+    setTimeout(() => {
+        //logout user after 30 minutes of in active.
+    }, 18000);
+
     return (
         <React.Fragment>
             <ContextHook>
@@ -37,7 +41,7 @@ const App = () => {
                 { token === null && id === null ? 
                     <Switch>
                        <Route path="/auth" exact component={Auth} /> {/* fully responsive on all device views. */}
-                       <Redirect to="/auth" />
+                       {/* <Redirect to="/auth" /> */}
                     </Switch>
                    :
                     <Switch>
@@ -45,7 +49,7 @@ const App = () => {
                         <Route path={`${id}/chat`} component={AsyncChatRoom} /> {/* not yet responsive on all device views. */}
                         <Route path={`/all_user/${id}`} component={AsyncAllUsers} /> {/* not yet responsive on all device views. */}
                         <Route path={`/user_profile/${id}`} component={AsyncUserProfile} /> {/* fully responsive on all device views. */}
-                        <Redirect to="/" />
+                        {token && <Redirect from="/auth" to="/" />}
                     </Switch>
                 } 
             </ContextHook>

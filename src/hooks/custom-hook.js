@@ -1,6 +1,14 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+// import axios from "axios";
+
 import { Context } from './context';
+
+
+//backendURL
+// const backendURL = "https://backend-chat-application.onrender.com/users" //comment back on after trying.
+const backendURL = "http://localhost:8080/users"
+
 
 //useCustom hook for fetching usersFriends
 export const useFetch = () => {
@@ -117,7 +125,7 @@ export const useAuthenticationFunc = (url) => {
 
     let history = useHistory();
 
-    const { login } = useContext(Context)
+    const { login } = useContext(Context);
 
     const inputFocusHandler = () => {
         if(email.trim().length !== 0) return
@@ -136,7 +144,7 @@ export const useAuthenticationFunc = (url) => {
                     body: JSON.stringify({ password, email })
                 })
                 if(response.ok === false) {
-                    console.log("[RESPONSE.OK", response)
+                    // console.log("[RESPONSE.OK", response)
                     const errorMessage = await response.json();
                     setErrorMessage(errorMessage);
                     return
@@ -150,15 +158,16 @@ export const useAuthenticationFunc = (url) => {
                 const data = JSON.stringify({ username: responseData.username,
                     token: responseData.token, id: responseData.id, image: responseData.image })
                 sessionStorage.setItem("data", data);
-                console.log("history props", history);
+                // console.log("history props", history);
                 history.push("/");
+                history.replace("/");
             }
             authRequest();
         } catch(err) {
             setLoading(false);
             setErrorMessage(err.message);
-            console.error("[ERROR-MESSAGE CATCHED", err.message);
-            console.log("register form")
+            // console.error("[ERROR-MESSAGE CATCHED", err.message);
+            // console.log("register form")
         }
     } 
 

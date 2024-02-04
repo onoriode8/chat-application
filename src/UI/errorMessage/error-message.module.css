@@ -1,18 +1,24 @@
-
-.container {
+.wrapperContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-right: 35%;
+    margin-left: 35%;
+    margin-top: 100px;
+    text-align: center;
+    z-index: 10;
+    position: fixed;
+}
+
+.container {
     border: 1px solid #ccc;
     box-shadow: 1px 3px 9px 0px #ccc;
     padding: 50px 70px;
     border-radius: 4px;
-    /* margin: 40% 200px; */
-    text-align: center;
-    z-index: 10;
-    position: sticky;
     background-color: #fff;
+    margin-right: 50%;
+    margin-left: 50%;
 }
 
 .backdrop {
@@ -37,13 +43,45 @@
     align-items: center;
 }
 
-
 @media(max-width: 540px) {
+    .wrapperContainer {
+        margin-right: 30%;
+        margin-left: 10%;
+        margin-top: 10em;
+        display: flex;
+        justify-content: center;
+    }
+
     .container {
-        margin-top: -110em;
-        margin-left: 50%;
-        margin-right: 2%;
-        padding: 50px 100px; 
+        margin-left: 40%;
+        margin-right: 10%;
+        padding: 50px 60px; 
+        border: 1px solid black;
+        
+    }
+}
+
+
+@media(max-width: 499px) {
+    .wrapperContainer {
+        margin-right: 30%;
+        margin-left: 10%;
+        margin-top: 10em;
+        text-align: center;
+    }
+
+    .container {
+        margin-left: 10%;
+        margin-right: 10%;
+        padding: 50px 30px;      
+    }
+}
+
+@media(max-width: 320px) {
+    .container {
+        /* margin-left: 1%;
+        margin-right: 2%; */
+        padding: 35px 25px; 
         
     }
 }
@@ -51,10 +89,9 @@
 
 @media(max-width: 280px) {
     .container {
-        margin-top: -120em;
-        margin-left: 40%;
+        margin-left: 1%;
         margin-right: 2%;
-        padding: 50px 100px; 
+        padding: 20px 10px; 
         
     }
 }

@@ -119,7 +119,9 @@ export const useAuthenticationFunc = (url) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const [closeErrorMessage, setCloseErrorMessage] = useState(false);
+
 
     const inputRef = useRef();
 
@@ -144,32 +146,32 @@ export const useAuthenticationFunc = (url) => {
                     body: JSON.stringify({ password, email })
                 })
                 if(response.ok === false) {
-                    // console.log("[RESPONSE.OK", response)
                     const errorMessage = await response.json();
+                    setLoading(false);
+                    setCloseErrorMessage(true)
                     setErrorMessage(errorMessage);
                     return
-                    // throw new Error(errorMessage);
                 };
                 const responseData = await response.json();
-                console.log("[RESPONSE DATA]", responseData)
                 setLoading(false);
                 login({ token: responseData.token, email: responseData.email, 
                     id: responseData._id, image: responseData.image });
                 const data = JSON.stringify({ username: responseData.username,
                     token: responseData.token, id: responseData.id, image: responseData.image })
                 sessionStorage.setItem("data", data);
-                // console.log("history props", history);
                 history.push("/");
                 history.replace("/");
+                window.location.reload(false);
             }
             authRequest();
         } catch(err) {
             setLoading(false);
+            setCloseErrorMessage(true)
             setErrorMessage(err.message);
-            // console.error("[ERROR-MESSAGE CATCHED", err.message);
-            // console.log("register form")
         }
     } 
 
-    return { loading, setEmail, errorMessage, setPassword, submitFormHandler, inputFocusHandler, inputRef }
+    return { loading, closeErrorMessage, setCloseErrorMessage, 
+        setEmail, errorMessage, setPassword, submitFormHandler, 
+        inputFocusHandler, inputRef }
 }

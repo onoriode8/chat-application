@@ -82,35 +82,36 @@ export const userProfileHandlerFun = (imageList, id, token) => {
                 // formData.set("image", imageList, imageList.name)
                 formData.append("image", imageList);
                 // const image = formData.get("image");
-                console.log("85", formData.get("image"))
+                // console.log("85", formData.get("image"))
                 dispatch(spinnerUploadingProfile(true))
                 // const file = {
                 //     name: imageList.name, 
                 //     type: imageList.type 
                 // }
-                const response = await fetch(`${backendURL}/profile/${id}`, 
-                // {
+
+                // axios.post(`${backendURL}/profile/${id}`, formData)
+                    // .then(res => console.log(res))
+                const response = await axios.post(`${backendURL}/profile/${id}`, {
                     // method: "POST",
-                    // headers: { 
-                    //     "Content-Type": "application/json",
-                    //     "authorization": "Bearer " + token
-                    // },
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "authorization": "Bearer " + token
+                    },
                     formData
-                // }
-                );
+                });
                 console.log("SERVER-RESPONSE", response);
-                const responseData = await response.json();
-                if (response.ok === false) {
-                    throw new Error("user not found")
+                // const responseData = await response.json();
+                if (response.statusText !== "OK" || response.status !== 200) {
+                    throw new Error("Failed to upload image.")
                 }
-                sessionStorage.setItem("user_Image", JSON.stringify(responseData.lastImageUploaded))
+                sessionStorage.setItem("user_Image", JSON.stringify(response.lastImageUploaded))
                 // console.log("Image_Data",data);
                 // const imageData = JSON.parse(data)
                 // imageData.image.push(responseData.lastImageUploaded)
                 dispatch(spinnerUploadingProfile(false))
-                console.log("SERVER-RESPONSE", responseData)
+                // console.log("SERVER-RESPONSE", responseData)
                 alert("Uploaded successful");
-                dispatch(dispatchImageUpload(responseData.lastImageUploaded));
+                dispatch(dispatchImageUpload(response.lastImageUploaded));
             } catch (err) {
                 dispatch(spinnerUploadingProfile(false))
                 dispatch(errorUploadingProfile(err.message))

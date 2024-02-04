@@ -18,14 +18,17 @@ export default function Register() {
 
     //console.log("[URL-DATA]", `${process.env.REACT_APP_AUTHENTICATION}`)
 
-    const { loading, setEmail, errorMessage, setPassword, submitFormHandler,
+    const { loading, closeErrorMessage, setCloseErrorMessage,
+         setEmail, errorMessage, setPassword, submitFormHandler,
          inputFocusHandler, inputRef } = useAuthenticationFunc(URL);
 
     const { authenticationPageSwitch, switchAuthenticationPageFunc } = useContext(Context);
         // console.log(authenticationPageSwitch, "[TESTING]", switchAuthenticationPageFunc)
     return (
         <>
-        {errorMessage && <ErrorMessage errorMessage={errorMessage}  /> }
+        { closeErrorMessage ? <div>
+            {errorMessage && <ErrorMessage errorMessage={errorMessage} clear={() => setCloseErrorMessage(false)} /> }
+        </div> : null }
         <div className="register_container">
             {!authenticationPageSwitch ? <form onSubmit={submitFormHandler} className="form_container">
                 {loading ? <Spinner /> : null}

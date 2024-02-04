@@ -16,7 +16,7 @@ const NavItems = (props) => {
     const { sideHandler } = useContext(Context);
     return (
         <nav>
-            {props.side && <div style={{fontSize: "50px", textAlign: "end"}}
+            {props.side && <div style={{fontSize: "50px", textAlign: "start"}}
             onClick={sideHandler}>X</div>}
             <ul onClick={sideHandler} style={{fontSize: props.fontSize}} className={props.side ? navItemsCss.side : navItemsCss.ul_cont}>
                 <li><NavLink to="/"><TiHome className={navItemsCss.icon} /> Home</NavLink></li>

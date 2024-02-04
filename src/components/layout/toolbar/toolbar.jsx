@@ -11,6 +11,7 @@ import { Logo } from "./logo/logo"
 import { Settings } from "../settings/settings";
 import { Context } from "../../../hooks/context";
 import Profile from '../../../containers/profile/toolbar-profile/toolbar-profile';
+import SideDrawer from "./side-drawer/side-drawer";
 
 import "./toolbar.css";
 
@@ -26,9 +27,12 @@ const Toolbar = () => {
         sessionStorage.removeItem("user_Image")
         history.push("/auth");
         history.replace("/auth");
+        window.location.reload(false);
     };
 
     return (
+        <>
+        <SideDrawer />
         <div className="toolbar_wrapper">
             <div className='toolbar'>
                 <Logo />
@@ -42,6 +46,7 @@ const Toolbar = () => {
                     : <div onClick={logoutFunc}><NavLink to="/logout">Logout</NavLink></div>}
             </div>
         </div>
+        </>
     );
 };
 

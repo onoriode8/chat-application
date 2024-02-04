@@ -9,12 +9,14 @@ const errorMessage = ({ errorMessage, clear }) => {
     return (
         <>
         <div className={errorMessageCss.backdrop}></div>
+        <div className={errorMessageCss.wrapperContainer}>
         <div className={errorMessageCss.container}>
             <p>{errorMessage}</p>
             <div className={errorMessageCss.wrap}>
                 <div></div>
                 <Button clicked={clear}>OK</Button>
             </div>
+        </div>
         </div>
         </>
     );

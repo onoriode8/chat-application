@@ -19,8 +19,8 @@ const errorHandlerFetchingUser = (errors) => {
 }
 
 //backendURL
-// const backendURL = "https://backend-chat-application.onrender.com/users" //comment back on after trying.
-const backendURL = "http://localhost:8080/users"
+const backendURL = "https://backend-chat-application.onrender.com/users" //comment back on after trying.
+// const backendURL = "http://localhost:8080/users"
 
 
 export const fetchUsers = () => {

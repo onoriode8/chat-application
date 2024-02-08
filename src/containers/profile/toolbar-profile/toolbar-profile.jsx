@@ -18,17 +18,19 @@ const ToolbarProfile = ({ userProfile }) => {
     useEffect(() => {
         // if(userProfile === null) return 
         const data = sessionStorage.getItem("user_Image")
-        // setImage(JSON.parse(data)) //comment back on.
+        const image = JSON.parse(data);
+        setImage(image) //comment back on.
+        console.log("", image)
     }, [userProfile]);
 
     return (
         <>
-            {!userProfile || image === null ?
+            {image === null ?
                 <div className="profile"><NavLink to={`/user_profile/${id}`}>Profile</NavLink></div>
              : 
                 <div>
                     <img style={{ width: "25px", height: "25px", borderRadius: "100px" }}
-                        src={userProfile || image} alt="" /> {/* image[0] */}
+                        src={`http://localhost:8080/${image}`} alt="" /> {/* image[0] */}
                     <MdArrowDropDown />
                 </div>
             } 

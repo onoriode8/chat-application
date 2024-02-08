@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
 import { connect } from "react-redux"
 
+import { FaArrowLeft } from "react-icons/fa";
+
 // import { Context } from '../../../hooks/context';
 import * as actionCreator from "../../../store/actions/actions-creators"
 import { usePickUserProfile, useFetchPosts } from "../../../hooks/custom-hook";
-import ErrorMessage from '../../../UI/errorMessage/error-message';
+// import ErrorMessage from '../../../UI/errorMessage/error-message';
 import Spinner from '../../../UI/spinner/spinner';
 // import Button from '../../../UI/button/button';
 
@@ -26,26 +28,20 @@ const UserProfile = (props) => {
    
     const submitProfileHandler = (event) => {
         event.preventDefault();
-        // const formData = new FormData();
-        // formData.append("image", userProfileUrl); //change to userPost
-        // const imageList = formData.get("image");
-        // console.log("Image_upload", imageList);
-        // if(imageList === null) return;
-        // const fileReader = new FileReader();
-        // let image;
-        // fileReader.onload = () => {
-        //     image = fileReader.result
-        // }
-        // fileReader.readAsDataURL(imageList)
+        // const backendURL = "http://localhost:8080/users"
+        
         console.log("[READ-IMAGE]", userPost)
+        const formData = new FormData();
+        formData.append("image", userPost);
         props.uploadImageFunc(userPost, id, token);
         
     };
 
-    
-
     return (
         <div>
+            <div title="goBack" style={{color: "blue", marginLeft: "10px", fontSize: "1.5em", marginTop: "15px"}}>
+                <FaArrowLeft onClick={() => props.history.goBack()} />
+            </div>
             {props.profileError && <div style={{marginTop: "4em", textAlign: "center", fontSize: "2em"}}>{props.profileError}</div>}
             <div style={{ display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "start", marginTop: "4em" }}>
                 <form onSubmit={submitProfileHandler}>
@@ -54,7 +50,7 @@ const UserProfile = (props) => {
                     {/* <br /> */}
                     <input ref={userProfileRef} 
                      type="file" accept=".png, .jpeg, .jpg, .svg, .webp"
-                     encType="multipart/form-data" 
+                     encType="multipart/form-data" name="image"
                      style={{ display: "none" }} onChange={pickImageHandler}/>
 
                     {userProfileUrl === null ? <button style={buttonStyle} onClick={addImageHandler}>Add Image</button>

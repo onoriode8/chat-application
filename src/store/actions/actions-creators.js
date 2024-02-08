@@ -70,48 +70,23 @@ const spinnerUploadingProfile = (spinner) => {
 
 
 export const userProfileHandlerFun = (imageList, id, token) => {
-    
     return dispatch => {
         const postUserImage = async () => {
-        console.log("ID & TOKEN", id, token);
-        const url = `${backendURL}/profile/${id}`
-        console.log("URL", url)
-            console.log("[CLIENT-PROFILE-UPLOAD]", imageList);
             try {
                 const formData = new FormData();
-                // formData.set("image", imageList, imageList.name)
                 formData.append("image", imageList);
-                // const image = formData.get("image");
-                // console.log("85", formData.get("image"))
                 dispatch(spinnerUploadingProfile(true))
-                // const file = {
-                //     name: imageList.name, 
-                //     type: imageList.type 
-                // }
-
-                // axios.post(`${backendURL}/profile/${id}`, formData)
-                    // .then(res => console.log(res))
-                const response = await axios.post(`${backendURL}/profile/${id}`, {
-                    // method: "POST",
+                const response = await axios.post(`${backendURL}/profile/${id}`, formData, {
                     headers: { 
-                        "Content-Type": "application/json",
-                        "authorization": "Bearer " + token
-                    },
-                    formData
+                        "Content-Type": "multipart/form-data",
+                        "Authorization": "Bearer " + token
+                    }
                 });
-                console.log("SERVER-RESPONSE", response);
-                // const responseData = await response.json();
-                if (response.statusText !== "OK" || response.status !== 200) {
-                    throw new Error("Failed to upload image.")
-                }
-                sessionStorage.setItem("user_Image", JSON.stringify(response.lastImageUploaded))
-                // console.log("Image_Data",data);
-                // const imageData = JSON.parse(data)
-                // imageData.image.push(responseData.lastImageUploaded)
+                const image = response.data.lastImageUploaded
+                sessionStorage.setItem("user_Image", JSON.stringify(image))
                 dispatch(spinnerUploadingProfile(false))
-                // console.log("SERVER-RESPONSE", responseData)
                 alert("Uploaded successful");
-                dispatch(dispatchImageUpload(response.lastImageUploaded));
+                dispatch(dispatchImageUpload(image));
             } catch (err) {
                 dispatch(spinnerUploadingProfile(false))
                 dispatch(errorUploadingProfile(err.message))

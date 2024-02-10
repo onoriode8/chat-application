@@ -15,6 +15,7 @@ import navItemsCss from './navItems.module.css';
 
 const NavItems = (props) => {
     const [image, setImage] = useState(null);
+    const [id, setId] = useState(null);
 
     const { sideHandler } = useContext(Context);
 
@@ -22,14 +23,23 @@ const NavItems = (props) => {
         // if(userProfile === null) return 
         const data = sessionStorage.getItem("user_Image")
         const image = JSON.parse(data);
-        setImage(image) //comment back on.
-        console.log("", image)
+        setImage(image)
     }, [props.userProfile]);
+
+    useEffect(() => {
+        const data = sessionStorage.getItem("data")
+        if(data === null) return
+        const image = JSON.parse(data);
+        setImage(image.image);
+        setId(image.id);
+    }, []);
 
     return (
         <nav>
             {props.side && <div style={{display: "flex", justifyContent: "space-between", alignItems:"center"}}>
-                    <div style={{fontSize: "50px", textAlign: "start"}} onClick={sideHandler}>X</div>
+                    <div style={{fontSize: "50px", textAlign: "start"}} onClick={sideHandler}>
+                        X
+                    </div>
                     <div>
                         <img style={{ width: "25px", height: "25px", borderRadius: "100px" }}
                             src={`http://localhost:8080/${image}`} alt="" /> {/* image[0] */}
@@ -38,7 +48,7 @@ const NavItems = (props) => {
             }
             <ul onClick={sideHandler} style={{fontSize: props.fontSize}} className={props.side ? navItemsCss.side : navItemsCss.ul_cont}>
                 <li><NavLink to="/"><TiHome className={navItemsCss.icon} /> Home</NavLink></li>
-                <li><NavLink to={`/all_user/${props.userId}`}><FaUsers className={navItemsCss.icon} /> AllUsers</NavLink></li>
+                <li><NavLink to={`/all_user/${props.userId ? props.userId : id}`}><FaUsers className={navItemsCss.icon} /> AllUsers</NavLink></li>
                 <li><NavLink to="friends"><GiThreeFriends className={navItemsCss.icon} /> Friends</NavLink></li>
                 <li><NavLink to="/add_posts"><BsUpload className={navItemsCss.icon} /> AddPosts</NavLink></li>
                 <li><NavLink to="/notifications"><IoNotificationsOutline className={navItemsCss.icon} /> Notifications</NavLink></li>

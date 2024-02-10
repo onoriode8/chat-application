@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import PropType from 'prop-types';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
-import { MdArrowDropDown } from "react-icons/md";
+// import { MdArrowDropDown } from "react-icons/md";
 
 
 import { Context } from '../../../hooks/context';
@@ -13,15 +13,20 @@ const ToolbarProfile = ({ userProfile }) => {
     const [image, setImage] = useState(null);
 
     const { id } = useContext(Context);
-    // console.log(id)
     
     useEffect(() => {
         // if(userProfile === null) return 
         const data = sessionStorage.getItem("user_Image")
         const image = JSON.parse(data);
-        setImage(image) //comment back on.
+        setImage(image)
         console.log("", image)
     }, [userProfile]);
+
+    useEffect(() => {
+        const data = sessionStorage.getItem("data")
+        const image = JSON.parse(data);
+        setImage(image.image);
+    }, []);
 
     return (
         <>
@@ -31,7 +36,7 @@ const ToolbarProfile = ({ userProfile }) => {
                 <div>
                     <img style={{ width: "25px", height: "25px", borderRadius: "100px" }}
                         src={`http://localhost:8080/${image}`} alt="" /> {/* image[0] */}
-                    <MdArrowDropDown />
+                    {/* <MdArrowDropDown /> */}
                 </div>
             } 
         </>

@@ -1,7 +1,8 @@
-import appleImage from '../../../../assests/webdeve1.webp'
+import React from 'react';
 
 const userStyle = {
-    display: "flex", justifyContent: "start",
+    display: "flex", justifyContent: "center",
+    flexDirection: "row",
     border: "1px solid #ccc",
     boxShadow: "1px 3px 11px 0px #ccc",
     padding: "8px 6px",
@@ -16,21 +17,19 @@ const imgStyle = {
 }
 
 
-const allUsersItems = (props) => {
-console.log(props)
-console.log("INDEX", props.id)
-
+const allUsersItems = React.memo((props) => {
+console.log("INDEX", props)
+    const username = props.email.split("@")[0];
 
     return (
     <div style={userStyle}>
-        <div><img style={imgStyle} src={appleImage} alt="" /></div>
-        {/* <div>{props.name}</div> */}
-        <div>{props.username}</div>
-        {/* <div>{props.email}</div> */}
-        {/* <div>...</div> */}
+        <div>
+            <img style={imgStyle} src={`http://localhost:8080/${props.image}`} alt="" />
+        </div>
+        <div>{username}</div>
     </div>
-)
-    }
+   )
+})
 
 
 export default allUsersItems

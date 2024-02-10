@@ -1,40 +1,65 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 
 // import * as actionTypes from "../../store/actions/action-types";
 import { fetchUsers } from '../../store/actions/actions-creators';
-import AllUsersItems from '../../components/users-posts/users/all-users/all-users-items'
+import AllUsersItems from '../../components/users-posts/users/all-users/all-users-items';
+// import Spinner from '../../UI/spinner/spinner';
+import ErrorMessage from '../../UI/errorMessage/error-message';
+
+    import { Context } from '../../hooks/context';
 
 const AllUsers = React.memo((props) => {
+    const [loading, setLoading] = useState(false);
+    const [clear, setClear] = useState(true);
+
+    const { token } = useContext(Context);
 
     useEffect(() => {
-        console.log("CHECK CHECK")
-        if(props.allusers.length !== 0) return
+        setLoading(true)
+        if(props.allusers.length !== 0) {
+            setLoading(false);
+            return
+        }
         const getRequest = () => {
-            props.getAllUsers();
+            props.getAllUsers(token);
         }
         getRequest();
-    }, [props]);
+    }, [token, props]);
 
-    console.log(props);
+    const clearModel = () => {
+        setLoading(false);
+        setClear(false)
+    }
+
+    console.log(props.allusers)
 
     return (
         <div>
+            {clear ? <div style={{textAlign: "center"}}>
+                {props.errors ? <ErrorMessage errorMessage={props.errors} clear={clearModel} /> : null}
+            </div> : null}
+            {/* <div style={{textAlign: "center"}}>{ props.spinner ? <Spinner />: null }</div> */}
+            {loading ? <div style={{textAlign: "center"}}>Loading...</div> : null}
             {props.allusers.length === 0 ? null : 
-                props.allusers.map((items, index) => <AllUsersItems key={items.id} id={index} {...items} />)}
+                props.allusers.map(items => <AllUsersItems key={items._id} email={items.email} 
+                id={items._id} image={items.image[0]}/>
+            )}
         </div>
     );
 });
 
 const mapStateToProps = state => {
     return {
-        allusers: state.users.allUsers
+        allusers: state.users.allUsers,
+        spinner: state.users.spinner,
+        errors: state.users.errors
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getAllUsers: () => dispatch(fetchUsers())
+        getAllUsers: (token) => dispatch(fetchUsers(token))
     }
 }
 

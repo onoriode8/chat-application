@@ -11,6 +11,13 @@ const allUsers = (data) => {
     }
 }
 
+const spinnerUploadingProfile = (spinner) => {
+    return {
+        type: actionTypes.SPINNER_UPLOADING_PROFILE,
+        spinner: spinner
+    }
+}
+
 const errorHandlerFetchingUser = (errors) => {
     return {
         type: actionTypes.ERRORS,
@@ -19,24 +26,31 @@ const errorHandlerFetchingUser = (errors) => {
 }
 
 //backendURL
-const backendURL = "https://backend-chat-application.onrender.com/users" //comment back on after trying.
-// const backendURL = "http://localhost:8080/users"
+//const backendURL = "https://backend-chat-application.onrender.com/users" //comment back on after trying.
+const backendURL = "http://localhost:8080/users"
 
 
-export const fetchUsers = () => {
+export const fetchUsers = (token) => {
     console.log("[FETCH ALL USERS SUCCESSFUL]");
     return dispatch => {
         const request = async () => {
             try {
-                const response = await fetch(`${backendURL}/upload/images`);
+                // dispatch(spinnerUploadingProfile(true))
+                const response = await fetch(`${backendURL}/users/`, {
+                    headers: {
+                        "Authorization" : "Bearer " + token
+                    }
+                });
                 const responseData = await response.json();
+                console.log("line 45", responseData)
                 if (response.ok === false) {
-                    throw new Error("user not found")
+                    throw new Error(responseData)
                 }
-                // const slice = responseData.slice(0, 9);
-                // console.log("[DATA]", slice)
+                dispatch(spinnerUploadingProfile(false))
+                console.log("line 45", responseData)
                 dispatch(allUsers(responseData));
             } catch (err) {
+                dispatch(spinnerUploadingProfile(false))
                 dispatch(errorHandlerFetchingUser(err.message))
             }
         }
@@ -61,12 +75,12 @@ const errorUploadingProfile = (err) => {
     }
 }
 
-const spinnerUploadingProfile = (spinner) => {
-    return {
-        type: actionTypes.SPINNER_UPLOADING_PROFILE,
-        spinner: spinner
-    }
-}
+// const spinnerUploadingProfile = (spinner) => {
+//     return {
+//         type: actionTypes.SPINNER_UPLOADING_PROFILE,
+//         spinner: spinner
+//     }
+// }
 
 
 export const userProfileHandlerFun = (imageList, id, token) => {

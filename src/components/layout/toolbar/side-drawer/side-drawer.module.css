@@ -17,12 +17,14 @@
 
 .ul_nav li {
     padding: 20px 0px;
+
 }
 
 .ul_nav a {
     text-decoration: none;
     color: black;
     margin: 20px;
+
 }
 
 .close {

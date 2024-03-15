@@ -9,7 +9,7 @@ import ErrorMessage from '../../UI/errorMessage/error-message';
 
     import { Context } from '../../hooks/context';
 
-const AllUsers = React.memo((props) => {
+const AllUsers = (props) => {
     const [loading, setLoading] = useState(false);
     const [clear, setClear] = useState(true);
 
@@ -17,6 +17,9 @@ const AllUsers = React.memo((props) => {
 
     useEffect(() => {
         setLoading(true)
+        if(props.allusers.length === 0) {
+            setLoading(false)
+        }
         if(props.allusers.length !== 0) {
             setLoading(false);
             return
@@ -25,14 +28,13 @@ const AllUsers = React.memo((props) => {
             props.getAllUsers(token);
         }
         getRequest();
-    }, [token, props]);
+    }, [props, token]);
 
     const clearModel = () => {
         setLoading(false);
         setClear(false)
     }
 
-    console.log(props.allusers)
 
     return (
         <div>
@@ -41,13 +43,13 @@ const AllUsers = React.memo((props) => {
             </div> : null}
             {/* <div style={{textAlign: "center"}}>{ props.spinner ? <Spinner />: null }</div> */}
             {loading ? <div style={{textAlign: "center"}}>Loading...</div> : null}
-            {props.allusers.length === 0 ? null : 
+            {props.allusers.length === 0 ? <div style={{textAlign: "center"}}>No User Yet!</div> : 
                 props.allusers.map(items => <AllUsersItems key={items._id} email={items.email} 
                 id={items._id} image={items.image[0]}/>
             )}
         </div>
     );
-});
+};
 
 const mapStateToProps = state => {
     return {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 const userStyle = {
     display: "flex", justifyContent: "center",
@@ -8,7 +8,8 @@ const userStyle = {
     padding: "8px 6px",
     width: "200px",
     alignItems: "center",
-    margin: "8px 0px"
+    margin: "8px 0px",
+    textAlign: "center"
 }
 
 const imgStyle = {
@@ -17,19 +18,21 @@ const imgStyle = {
 }
 
 
-const allUsersItems = React.memo((props) => {
-console.log("INDEX", props)
+const allUsersItems = memo((props) => {
+    
     const username = props.email.split("@")[0];
 
     return (
-    <div style={userStyle}>
-        <div>
-            <img style={imgStyle} src={`http://localhost:8080/${props.image}`} alt="" />
+        <div style={{display: "flex", justifyContent: "center"}}>
+            <div style={userStyle}>
+                <div>
+                    <img style={imgStyle} src={`http://localhost:8080/${props.image}`} alt="" />
+                </div>
+                <div>{username}</div>
+            </div>
         </div>
-        <div>{username}</div>
-    </div>
-   )
+   );
 })
 
 
-export default allUsersItems
+export default allUsersItems;

@@ -8,7 +8,7 @@ import errorMessageCss from './error-message.module.css';
 const errorMessage = ({ errorMessage, clear }) => {
     return (
         <>
-        <div className={errorMessageCss.backdrop}></div>
+        <div onClick={clear} className={errorMessageCss.backdrop}></div>
         <div className={errorMessageCss.wrapperContainer}>
         <div className={errorMessageCss.container}>
             <p>{errorMessage}</p>

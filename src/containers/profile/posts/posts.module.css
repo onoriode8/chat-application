@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search {
+    outline: none;
+    border: none;
+    margin: 20px;
+    /* text-align: center; */
+}
+
+.wrapper img {
+    width: 100px;
+    height: 100px;
+    margin: 10px 16px;
+}

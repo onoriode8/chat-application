@@ -50,7 +50,7 @@ const NavItems = (props) => {
                 <li><NavLink to="/"><TiHome className={navItemsCss.icon} /> Home</NavLink></li>
                 <li><NavLink to={`/all_user/${props.userId ? props.userId : id}`}><FaUsers className={navItemsCss.icon} /> AllUsers</NavLink></li>
                 <li><NavLink to="friends"><GiThreeFriends className={navItemsCss.icon} /> Friends</NavLink></li>
-                <li><NavLink to="/add_posts"><BsUpload className={navItemsCss.icon} /> AddPosts</NavLink></li>
+                <li><NavLink to="/users/posts"><BsUpload className={navItemsCss.icon} /> AddPosts</NavLink></li>
                 <li><NavLink to="/notifications"><IoNotificationsOutline className={navItemsCss.icon} /> Notifications</NavLink></li>
                 <li><NavLink to="/logout"><RiLogoutCircleLine className={navItemsCss.icon} /> Logout</NavLink></li>
             </ul>

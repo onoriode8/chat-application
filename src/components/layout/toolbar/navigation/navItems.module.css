@@ -1,7 +1,7 @@
 .ul_cont {
     list-style: none;
     border: 1px solid black;
-    /* position: sticky; */
+    /* position: relative; */
     left: 0;
     margin: -1800px 0px;
 }
@@ -63,7 +63,7 @@
     }
     .side li a {
         font-size: 2em;
-        padding: 5px 0px;
+        /* padding: 5px 0px; */
         margin-left: 20px;
     }
 }
@@ -77,13 +77,8 @@
         height: 14vh;
     }
 
-    /* .ul_cont {
-        display: none;
-    } */
-
     .icon {
-        font-size: 2em;
-        /* display: none; */
+        font-size: 1em;
     }
 }
 
